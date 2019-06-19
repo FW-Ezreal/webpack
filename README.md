@@ -4,3 +4,4 @@ new HtmlWebpackPlugin({
   template: './xxx',
   hash
 })
+? uglifyjs 和mode = production 区别

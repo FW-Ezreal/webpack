@@ -1,5 +1,6 @@
 var path = require('path');
 var HtmlWebpackPlugin =  require('html-webpack-plugin');
+var UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
   mode: 'development',
   // mode: 'production',
@@ -12,13 +13,30 @@ module.exports = {
     filename: '[name].js'
   },
   devServer: {
-  
+    contentBase: path.resolve(__dirname, 'dist'),
+    host: 'localhost',
+    port: '1717'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {loader: 'style-loader'},
+          {loader: 'css-loader'}
+        ]
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
-      hash: true
-    })
+      hash: true,
+      minify: {
+        removeAttributeQuotes: true
+      }
+    }),
+    new UglifyjsWebpackPlugin()
   ]
 
 }
