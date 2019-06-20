@@ -1,6 +1,7 @@
 var path = require('path');
 var HtmlWebpackPlugin =  require('html-webpack-plugin');
 var UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
+var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   mode: 'development',
   // mode: 'production',
@@ -20,11 +21,34 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.less$/,
+        use: ['style-loader', 'css-loader', 'less-loader']
+      },
+      {
         test: /\.css$/,
         use: [
           {loader: 'style-loader'},
-          {loader: 'css-loader'}
+          {loader: 'css-loader'},
+          {loader: 'postcss-loader'}
         ]
+      },
+      {
+        test: /\.(png|jpg|svg|gif)/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1024,
+              outputPath: 'image/'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(html|htm)$/,
+        use: { 
+          loader:'html-withimg-loader',
+        }
       }
     ]
   },
