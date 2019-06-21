@@ -7,3 +7,5 @@ new HtmlWebpackPlugin({
 ? uglifyjs 和mode = production 区别
 
 extract-text-webpack-plugin 解决我们提取CSS的需求
+
+js -> babel-loader @babel/core @babel/preset-env
