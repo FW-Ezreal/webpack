@@ -1,7 +1,7 @@
 {
   "name": "webpack",
   "version": "1.0.0",
-  "description": "npx webpack 使文件打包，mode = production 时压缩，mode = development 不压缩",
+  "description": "my first",
   "main": "webpack.config.js",
   "dependencies": {
     "webpack-dev-server": "^3.7.2",
@@ -12,6 +12,8 @@
     "@babel/preset-env": "^7.4.5",
     "autoprefixer": "^9.6.0",
     "babel-loader": "^8.0.6",
+    "chalk": "^2.4.2",
+    "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^3.0.0",
     "extract-text-webpack-plugin": "^3.0.2",

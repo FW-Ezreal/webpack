@@ -1,12 +1,13 @@
 var path = require('path');
 var HtmlWebpackPlugin =  require('html-webpack-plugin');
-var UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
+// var UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: 'development',
   // mode: 'production',
   entry: {
-    index: './src/index.js',
-    index1: './src/1.js'
+    home: './src/page/home/index.js',
+    about: './src/page/about/index.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -64,11 +65,17 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
+      filename: 'home.html',
       hash: true,
-      minify: {
-        removeAttributeQuotes: true
-      }
+      chunks: ['home']
     }),
+    new HtmlWebpackPlugin({
+      template: './index.html',
+      filename: 'about.html',
+      hash: true,
+      chunks: ['about']
+    }),
+    new CleanWebpackPlugin()
     // new UglifyjsWebpackPlugin()
   ]
 

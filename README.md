@@ -16,3 +16,10 @@ cross-env能跨平台地设置及使用环境变量
 
 cross-env让这一切变得简单，不同平台使用唯一指令，无需担心跨平台问题
 cross-env NODE_ENV=production webpack --config build/webpack.config.js
+
+console.log(chalk.blue(['打包完成']))
+console.log(chalk.green(
+  'I am a green line ' +
+  chalk.blue.underline.bold('with a blue substring') +
+  ' that becomes green again!'
+))
