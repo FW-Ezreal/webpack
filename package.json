@@ -34,7 +34,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server",
     "build": "webpack",
-    "build1": "cross-env NODE_ENV=development node bin/build.js",
+    "build1": "cross-env NODE_ENV=production node bin/build.js",
     "dev1": "cross-env NODE_ENV=development node bin/dev.js"
   },
   "repository": {

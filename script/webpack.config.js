@@ -7,12 +7,14 @@ module.exports = function() {
   const webpackConfig = baseConfig();
   const entryPath = {};
   pageConfig.pages.forEach((metaData) => {
+    const entry = metaData.entry.substring(0, metaData.entry.length - 5);
+
     webpackConfig.plugins.push(new HtmlWebpackPlugin({
       filename: metaData.entry,
       title: metaData.title,
-      template: path.posix.join(rootDir, 'index.html')
+      template: path.posix.join(rootDir, 'index.html'),
+      chunks: [entry]
     }));
-    const entry = metaData.entry.substring(0, metaData.entry.length - 5);
     entryPath[entry] = metaData.src;
   })
   webpackConfig.entry = entryPath;

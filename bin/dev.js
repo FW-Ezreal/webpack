@@ -6,7 +6,6 @@ const url = require('url');
 const address = require('address');
 const pkg = require('../package.json');
 const qrcode = require('qrcode-terminal');
-console.log('host', process.env.HOST);
 
 const HOST = process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || 8000;
@@ -16,17 +15,36 @@ let compiler;
 try {
   compiler = webpack(webpackConfig);
 } catch (error) {
-  console.log('error!!');
+  console.log('error!!', error);
   // process.exit(1);
 }
-const devServer = new WebpackDevServer(compiler,{});
+// const serverConfig = {
+//   disableHostCheck: true,
+//   compress: true,
+//   clientLogLevel: 'none',
+//   hot: true,
+//   quiet: true,
+//   headers: {
+//     'access-control-allow-origin': '*',
+//   },
+//   publicPath: webpackConfig.output.publicPath,
+//   watchOptions: {
+//     ignored: /node_modules/,
+//   },
+//   historyApiFallback: {
+//     disableDotRule: true,
+//   },
+//   overlay: false,
+//   host: HOST,
+// };
+// const devServer = new WebpackDevServer(compiler,serverConfig);
 
-devServer.listen(PORT, HOST, err => {
-  if (err) {
-    console.log('err')
-  }
-  console.log(chalk.cyan('正在启动 development server...\n'));
-})
+// devServer.listen(PORT, HOST, err => {
+//   if (err) {
+//     console.log('err')
+//   }
+//   console.log(chalk.cyan('正在启动 development server...\n'));
+// })
 // const perpareUrls = (protocol, host, port) => {
 //   const formatUrl = hostname => 
 //     url.format({
